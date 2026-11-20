@@ -1,0 +1,34 @@
+IMAGES FOR AID-CARE-EVERYWHERE
+==============================
+
+Put every image in this "images" folder. Use lowercase file names with
+no spaces (for example crisis-1.jpg, not "Crisis 1.JPG").
+
+FILE NAME              WHERE IT APPEARS                       SIZE / SHAPE
+---------------------  -------------------------------------  -------------------------
+logo.png (or .svg)     Header of every page                   square, at least 128x128 px
+favicon.svg            Browser tab icon (placeholder included) square
+crisis-1.jpg           Home page poster 1 + blurred background landscape, about 1200x800 px
+crisis-2.jpg           Home page poster 2 + blurred background landscape, about 1200x800 px
+crisis-3.jpg           Home page poster 3 + blurred background landscape, about 1200x800 px
+crisis-4.jpg           Home page poster 4 + blurred background landscape, about 1200x800 px
+crisis-5.jpg           Home page poster 5 + blurred background landscape, about 1200x800 px
+crisis-1-poster.jpg    Crisis section poster (Placeholder 1)  wide, at least 1600x1000 px
+team-1.jpg             About Us, team card 1                  square, about 300x300 px
+team-2.jpg             About Us, team card 2                  square, about 300x300 px
+team-3.jpg             About Us, team card 3                  square, about 300x300 px
+
+TIPS
+- Keep each photo under about 300 KB so pages load quickly
+  (free tools such as squoosh.app can shrink them).
+- Only use photos you are allowed to use: your own photos, photos an
+  organization has given you permission to use, or openly licensed photos
+  (for example Creative Commons) with the credit they ask for.
+- Always fill in the credit line ("Photo: ...") under each crisis photo.
+- Choose dignified photos that show people as active and resilient.
+  Avoid graphic images and photos of identifiable children in distress.
+- Every image needs alt text: a short description of what it shows,
+  e.g. alt="Aid workers unloading food sacks from a truck".
+
+HOW TO SWAP A PLACEHOLDER FOR A PHOTO
+See section 6 of HOW-TO-BUILD-THE-WEBSITE.txt.

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Current Crises — AID-CARE-EVERYWHERE</title>
+  <meta name="description" content="The humanitarian crises where people need help most urgently right now, with the latest UN figures.">
+  <link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Playfair+Display:ital,wght@0,700;0,800;1,400&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body id="top">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <!-- ===================== HEADER (same on every page) ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="AID-CARE-EVERYWHERE, home">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <span class="brand__name">AID-CARE-EVERYWHERE</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="current-crises.html" aria-current="page">Current Crises</a></li>
+          <li><a class="nav-link" href="how-to-help.html">How to Help</a></li>
+          <li><a class="nav-link" href="about.html">About Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- =====================================================================
+         LIST VIEW — shown by default.
+         script.js hides it when a crisis section (e.g. #crisis-1) is open.
+         ===================================================================== -->
+    <div id="crisis-list-view">
+
+      <!-- 1. PAGE INTRO (2–3 sentences) -->
+      <section class="page-intro on-dark" aria-labelledby="page-title">
+        <span class="deco deco--glow-teal" aria-hidden="true"></span>
+        <span class="deco deco--glow-coral" aria-hidden="true"></span>
+        <span class="deco deco--ring" aria-hidden="true"></span>
+
+        <div class="container page-intro__inner">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="index.html">Home</a></li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page">Current crises</li>
+            </ol>
+          </nav>
+          <p class="eyebrow eyebrow--gold eyebrow--lined-left">Current crises</p>
+          <h1 class="page-title" id="page-title">Where people need help most urgently right now</h1>
+          <p class="page-intro__text">This page lists the humanitarian crises where needs are most urgent today. Each entry explains what is happening, where, and how many people are affected, using the latest UN figures. Search by country or region to open a crisis page, or pick one from the list below.</p>
+          <ul class="meta-pills">
+            <li>[Number] crises listed</li>
+            <li>Updated [date]</li>
+            <li>Data: UN OCHA · FAO–WFP</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 2. SEARCH BAR — pressing Search opens the matching crisis section -->
+      <section class="container" aria-label="Search crises">
+        <div class="search-card">
+          <form class="search-form" role="search" data-crisis-search>
+            <label for="crisis-search">Find a crisis</label>
+            <div class="search-row">
+              <div class="search-field">
+                <span class="search-field__icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+                </span>
+                <input class="search-input" id="crisis-search" name="q" type="search" placeholder="Search by region, country" autocomplete="off" aria-describedby="search-hint">
+              </div>
+              <button class="search-btn" type="submit" aria-label="Search">
+                <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+              </button>
+            </div>
+          </form>
+          <p class="search-hint" id="search-hint" aria-live="polite">Type a country or region and press Search to open its crisis page.</p>
+          <p class="proto-note">Prototype note: every search opens Placeholder 1 until more crisis sections are added.</p>
+        </div>
+      </section>
+
+      <!-- 3. FEATURED CRISES — placeholders -->
+      <section class="list-section section--alt" id="featured-crises" aria-labelledby="featured-title">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Ranked by urgency</p>
+              <h2 class="section-title" id="featured-title">Featured crises</h2>
+            </div>
+            <p class="visually-hidden" id="legend-label">Urgency levels</p>
+            <ul class="legend" aria-describedby="legend-label">
+              <li class="urgency urgency--famine">Famine confirmed</li>
+              <li class="urgency urgency--highest">Highest concern</li>
+              <li class="urgency urgency--veryhigh">Very high concern</li>
+              <li class="urgency urgency--large">Large-scale need</li>
+            </ul>
+          </div>
+
+          <!--
+            Each crisis follows the format:  COUNTRY — CONTINENT — 1 to 3 sentences.
+            data-detail    = id of the crisis section this card opens (only Placeholder 1 for now)
+            data-keywords  = words people might search for: country, region, cities.
+                             Fill these in when you add the real country, e.g.
+                             data-keywords="sudan east africa darfur khartoum"
+          -->
+          <ol class="crisis-list">
+
+            <li class="crisis-card crisis-card--open" data-detail="crisis-1" data-keywords="">
+              <span class="crisis-card__rank rank--highest" aria-hidden="true">1</span>
+              <div class="crisis-card__body">
+                <p class="card-label card-label--gold">Placeholder 1</p>
+                <h3 class="crisis-card__title"><span class="ph">[Country name]</span> <span class="dash" aria-hidden="true">—</span> <span class="crisis-card__continent ph ph--coral">[Continent]</span></h3>
+                <p class="crisis-card__text crisis-card__text--ph">[1–3 sentences: what is happening, how many people are affected, and why help is urgent now]</p>
+                <div class="crisis-card__meta">
+                  <span class="stat-pill"><strong>[Number]</strong> [people affected]</span>
+                  <span class="urgency urgency--placeholder">[Urgency level]</span>
+                  <span class="spacer"></span>
+                  <a class="btn btn--coral" href="#crisis-1">
+                    Open crisis page<span class="visually-hidden">: Placeholder 1</span>
+                    <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+                  </a>
+                </div>
+              </div>
+            </li>
+
+            <li class="crisis-card" data-keywords="">
+              <span class="crisis-card__rank" aria-hidden="true">2</span>
+              <div class="crisis-card__body">
+                <p class="card-label">Placeholder 2</p>
+                <h3 class="crisis-card__title"><span class="ph">[Country name]</span> <span class="dash" aria-hidden="true">—</span> <span class="crisis-card__continent ph ph--coral">[Continent]</span></h3>
+                <p class="crisis-card__text crisis-card__text--ph">[1–3 sentences: what is happening, how many people are affected, and why help is urgent now]</p>
+                <div class="crisis-card__meta">
+                  <span class="stat-pill"><strong>[Number]</strong> [people affected]</span>
+                  <span class="urgency urgency--placeholder">[Urgency level]</span>
+                  <span class="spacer"></span>
+                  <span class="coming-soon">Crisis page coming soon</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="crisis-card" data-keywords="">
+              <span class="crisis-card__rank" aria-hidden="true">3</span>
+              <div class="crisis-card__body">
+                <p class="card-label">Placeholder 3</p>
+                <h3 class="crisis-card__title"><span class="ph">[Country name]</span> <span class="dash" aria-hidden="true">—</span> <span class="crisis-card__continent ph ph--coral">[Continent]</span></h3>
+                <p class="crisis-card__text crisis-card__text--ph">[1–3 sentences: what is happening, how many people are affected, and why help is urgent now]</p>
+                <div class="crisis-card__meta">
+                  <span class="stat-pill"><strong>[Number]</strong> [people affected]</span>
+                  <span class="urgency urgency--placeholder">[Urgency level]</span>
+                  <span class="spacer"></span>
+                  <span class="coming-soon">Crisis page coming soon</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="crisis-card" data-keywords="">
+              <span class="crisis-card__rank" aria-hidden="true">4</span>
+              <div class="crisis-card__body">
+                <p class="card-label">Placeholder 4</p>
+                <h3 class="crisis-card__title"><span class="ph">[Country name]</span> <span class="dash" aria-hidden="true">—</span> <span class="crisis-card__continent ph ph--coral">[Continent]</span></h3>
+                <p class="crisis-card__text crisis-card__text--ph">[1–3 sentences: what is happening, how many people are affected, and why help is urgent now]</p>
+                <div class="crisis-card__meta">
+                  <span class="stat-pill"><strong>[Number]</strong> [people affected]</span>
+                  <span class="urgency urgency--placeholder">[Urgency level]</span>
+                  <span class="spacer"></span>
+                  <span class="coming-soon">Crisis page coming soon</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="crisis-card" data-keywords="">
+              <span class="crisis-card__rank" aria-hidden="true">5</span>
+              <div class="crisis-card__body">
+                <p class="card-label">Placeholder 5</p>
+                <h3 class="crisis-card__title"><span class="ph">[Country name]</span> <span class="dash" aria-hidden="true">—</span> <span class="crisis-card__continent ph ph--coral">[Continent]</span></h3>
+                <p class="crisis-card__text crisis-card__text--ph">[1–3 sentences: what is happening, how many people are affected, and why help is urgent now]</p>
+                <div class="crisis-card__meta">
+                  <span class="stat-pill"><strong>[Number]</strong> [people affected]</span>
+                  <span class="urgency urgency--placeholder">[Urgency level]</span>
+                  <span class="spacer"></span>
+                  <span class="coming-soon">Crisis page coming soon</span>
+                </div>
+              </div>
+            </li>
+
+            <li class="crisis-card" data-keywords="">
+              <span class="crisis-card__rank" aria-hidden="true">6</span>
+              <div class="crisis-card__body">
+                <p class="card-label">Placeholder 6</p>
+                <h3 class="crisis-card__title"><span class="ph">[Country name]</span> <span class="dash" aria-hidden="true">—</span> <span class="crisis-card__continent ph ph--coral">[Continent]</span></h3>
+                <p class="crisis-card__text crisis-card__text--ph">[1–3 sentences: what is happening, how many people are affected, and why help is urgent now]</p>
+                <div class="crisis-card__meta">
+                  <span class="stat-pill"><strong>[Number]</strong> [people affected]</span>
+                  <span class="urgency urgency--placeholder">[Urgency level]</span>
+                  <span class="spacer"></span>
+                  <span class="coming-soon">Crisis page coming soon</span>
+                </div>
+              </div>
+            </li>
+
+          </ol>
+
+          <p class="list-sources">Sources: [Organizations and reports used, with the date each was checked]</p>
+        </div>
+      </section>
+    </div>
+
+
+    <!-- =====================================================================
+         CRISIS SECTION — PLACEHOLDER 1
+         Opens from the search bar or the "Open crisis page" button (#crisis-1).
+         To add another crisis: copy this whole <article>, change every
+         "crisis-1" to "crisis-2", and give card 2 data-detail="crisis-2".
+         ===================================================================== -->
+    <article class="crisis-detail" id="crisis-1" aria-labelledby="crisis-1-name">
+
+      <!-- Path bar: Crises → Region / Country -->
+      <div class="crumb-bar">
+        <div class="container crumb-bar__inner">
+          <nav class="crumbs" aria-label="Crisis location">
+            <ol>
+              <li><a href="#featured-crises">Crises</a></li>
+              <li aria-hidden="true" class="crumbs__arrow">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+              </li>
+              <li>[Region]</li>
+              <li aria-hidden="true">/</li>
+              <li aria-current="page"><strong>[Country name]</strong></li>
+            </ol>
+          </nav>
+          <a class="btn btn--outline" href="#featured-crises">
+            <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>
+            Back to all crises
+          </a>
+        </div>
+      </div>
+
+      <!-- SECTION 1: key facts (1/4) + poster (3/4) -->
+      <section class="container detail-top" aria-label="Key facts and poster">
+        <aside class="facts" aria-label="Key facts">
+          <div class="facts__tags">
+            <span class="tag tag--gold">[Continent]</span>
+            <span class="urgency urgency--highest">[Urgency level]</span>
+          </div>
+          <div>
+            <p class="facts__type">[Crisis type]</p>
+            <h1 class="facts__name" id="crisis-1-name" tabindex="-1"><span class="ph ph--light">[Country name]</span></h1>
+          </div>
+          <div class="facts__stat">
+            <p class="facts__label">People affected</p>
+            <p class="facts__number">[Number]</p>
+            <p class="facts__small">[e.g. people in need of aid in 2026]</p>
+          </div>
+          <dl class="facts__list">
+            <div><dt>People displaced</dt><dd>[Number]</dd></div>
+            <div><dt>Crisis began</dt><dd>[Month, year]</dd></div>
+            <div><dt>Most urgent needs</dt><dd>[e.g. food, water, shelter, health care]</dd></div>
+            <div><dt>Last updated</dt><dd>[Date]</dd></div>
+          </dl>
+          <div class="facts__footer">
+            <a class="btn btn--coral btn--lg" href="#crisis-1-help">
+              How to help
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+            </a>
+            <p class="facts__source">Source: [Organization, report name and date]</p>
+          </div>
+        </aside>
+
+        <!-- Poster: replace .poster-placeholder with
+             <img src="images/crisis-1-poster.jpg" alt="Describe the poster"> -->
+        <figure class="crisis-poster art-1">
+          <span class="crisis-poster__label">Poster</span>
+          <div class="poster-placeholder">[Poster for this crisis: a credited photo or a designed poster, landscape, at least 1600 px wide]</div>
+          <div class="crisis-poster__bottom">
+            <div class="crisis-poster__text">
+              <p class="crisis-poster__headline"><span class="ph ph--light">[Poster headline]</span></p>
+              <p class="crisis-poster__message"><span class="ph ph--light">[Short message on the poster, one line]</span></p>
+            </div>
+          </div>
+          <figcaption>Photo: [Photographer / organization]</figcaption>
+        </figure>
+      </section>
+
+      <!-- SECTION 2: newspaper-style heading + 2–3 paragraphs -->
+      <section class="news" aria-labelledby="crisis-1-headline">
+        <div class="news__inner">
+          <div class="news__kicker">
+            <span class="news__section">In depth · [Region]</span>
+            <span>[Day, Date Month Year]</span>
+          </div>
+          <h2 class="news__headline" id="crisis-1-headline">[Headline for this crisis, written like a newspaper front page]</h2>
+          <p class="news__deck">[One-sentence summary that sits under the headline and tells readers why this matters now]</p>
+          <p class="news__byline">By <strong>[Author name]</strong> <span aria-hidden="true">·</span> [Date] <span aria-hidden="true">·</span> [X]-minute read</p>
+
+          <div class="news__columns">
+            <div class="ph-para">
+              <p class="ph-para__label">Paragraph 1 · What is happening</p>
+              <p>[Explain the crisis in 3–5 sentences: what started it, when it began, where it is happening, and how it has changed in recent weeks or months.]</p>
+            </div>
+            <div class="ph-para">
+              <p class="ph-para__label">Paragraph 2 · Who is affected</p>
+              <p>[Give the key numbers in 3–5 sentences: people in need, people forced from their homes, children and families, hunger and health. Name the source and date for each number.]</p>
+            </div>
+            <figure class="pull-quote">
+              <span class="pull-quote__mark" aria-hidden="true">“</span>
+              <blockquote>[A short quote from a UN or aid official about the crisis]</blockquote>
+              <figcaption>— [Name, role, organization, date]</figcaption>
+            </figure>
+            <div class="ph-para">
+              <p class="ph-para__label">Paragraph 3 · What is being done and what is needed</p>
+              <p>[Describe in 3–5 sentences how aid organizations are responding, what is still missing (funding, safe access, supplies), and why help matters now.]</p>
+            </div>
+          </div>
+          <p class="news__sources">Sources for this article: [Organization, report title, date] · [Organization, report title, date]</p>
+        </div>
+      </section>
+
+      <!-- SECTION 3: HOW TO HELP — trusted sources only -->
+      <section class="help-section" id="crisis-1-help" aria-labelledby="crisis-1-help-title">
+        <span class="deco deco--ring" aria-hidden="true"></span>
+        <div class="container help-section__inner">
+          <div class="help-intro">
+            <p class="eyebrow">Take action</p>
+            <h2 class="section-title" id="crisis-1-help-title">How you can help</h2>
+            <p>The links below come only from trusted sources: the official government website of the affected country, worldwide aid organizations such as UN agencies and the Red Cross and Red Crescent, and long-established humanitarian charities. Each link opens the organization's own website. AID-CARE-EVERYWHERE never collects donations.</p>
+          </div>
+
+          <div class="help-grid">
+            <ul class="source-list">
+              <li class="source-item">
+                <div class="source-item__head"><strong>[Name of the official government relief website]</strong><span class="source-type source-type--gov">Government</span></div>
+                <p>[One line on what this site offers, e.g. the national relief fund]</p>
+                <p class="source-item__link"><a href="#" rel="nofollow">[official-web-address.gov]</a> <span>· Checked [date]</span></p>
+              </li>
+              <li class="source-item">
+                <div class="source-item__head"><strong>[UN fund or agency responding to this crisis]</strong><span class="source-type source-type--world">UN / worldwide</span></div>
+                <p>[One line on what they do here, e.g. food, shelter or emergency funding]</p>
+                <p class="source-item__link"><a href="#" rel="nofollow">[official-web-address.org]</a> <span>· Checked [date]</span></p>
+              </li>
+              <li class="source-item">
+                <div class="source-item__head"><strong>[Red Cross or Red Crescent society]</strong><span class="source-type source-type--world">UN / worldwide</span></div>
+                <p>[One line on their work in this crisis]</p>
+                <p class="source-item__link"><a href="#" rel="nofollow">[official-web-address.org]</a> <span>· Checked [date]</span></p>
+              </li>
+              <li class="source-item">
+                <div class="source-item__head"><strong>[Established humanitarian charity]</strong><span class="source-type source-type--charity">Charity</span></div>
+                <p>[One line on their work here, and the registry where you checked them]</p>
+                <p class="source-item__link"><a href="#" rel="nofollow">[official-web-address.org]</a> <span>· Checked [date]</span></p>
+              </li>
+              <li class="source-item">
+                <div class="source-item__head"><strong>[Second established humanitarian charity]</strong><span class="source-type source-type--charity">Charity</span></div>
+                <p>[One line on their work here, and the registry where you checked them]</p>
+                <p class="source-item__link"><a href="#" rel="nofollow">[official-web-address.org]</a> <span>· Checked [date]</span></p>
+              </li>
+            </ul>
+
+            <aside class="before-you-give on-dark" aria-labelledby="crisis-1-safe">
+              <div class="before-you-give__head">
+                <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9c-4.5-1-8-4-8-9V6z"/><path d="M8.5 12l2.5 2.5l4.5-5"/></svg>
+                <h3 id="crisis-1-safe">Before you give</h3>
+              </div>
+              <ul>
+                <li>Check the web address matches the organization's official site.</li>
+                <li>Pay by credit card or check. Never by gift card, wire transfer or cryptocurrency.</li>
+                <li>Be wary of pressure to give right away, or of names that only sound like a real charity.</li>
+                <li>Report suspicious fundraisers to your national fraud-reporting service.</li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </article>
+
+  </main>
+
+  <!-- ===================== FOOTER (same on every page) ===================== -->
+  <footer class="site-footer on-dark">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="footer-brand__logo" aria-hidden="true"></span>
+          <p class="footer-brand__name">AID-CARE-EVERYWHERE</p>
+          <p>Understand the crisis. Give safely. Every link leads to the source.</p>
+          <p class="footer-brand__small">A student project · 2026</p>
+        </div>
+
+        <nav class="footer-col" aria-labelledby="f-explore">
+          <h2 id="f-explore">Explore</h2>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="current-crises.html">Current Crises</a></li>
+            <li><a href="how-to-help.html">How to Help</a></li>
+            <li><a href="about.html">About Us</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-labelledby="f-safe">
+          <h2 id="f-safe">Give safely</h2>
+          <ul>
+            <li><a href="how-to-help.html#checklist">Safe-giving checklist</a></li>
+            <li><a href="how-to-help.html#check-links">How we check links</a></li>
+            <li><a href="how-to-help.html#report">Report a suspicious link</a></li>
+          </ul>
+        </nav>
+
+        <nav class="footer-col" aria-labelledby="f-sources">
+          <h2 id="f-sources">Trusted sources</h2>
+          <ul>
+            <li><a href="https://humanitarianaction.info" target="_blank" rel="noopener">OCHA Humanitarian Action ↗</a></li>
+            <li><a href="https://reliefweb.int" target="_blank" rel="noopener">ReliefWeb ↗</a></li>
+            <li><a href="https://crisisrelief.un.org" target="_blank" rel="noopener">UN Crisis Relief ↗</a></li>
+            <li><a href="https://consumer.ftc.gov/features/donating-safely-and-avoiding-scams" target="_blank" rel="noopener">FTC: Donating safely ↗</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="footer-notice">
+        <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9c-4.5-1-8-4-8-9V6z"/><path d="M12 8v5"/><path d="M12 16h.01"/></svg>
+        <p><strong>We never collect donations.</strong> AID-CARE-EVERYWHERE is an independent awareness project. It is not a charity and is not affiliated with the organizations it links to. Figures come from OCHA, FAO–WFP and other UN sources, with dates shown next to each one.</p>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 AID-CARE-EVERYWHERE · Last updated 15 November 2026</p>
+        <div class="footer-bottom__links">
+          <a href="mailto:you@example.com">Contact: [YOUR EMAIL]</a><!-- TODO: replace with your email -->
+          <a href="#top">Back to top ↑</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- Placeholder browser-tab icon: a teal square like the logo placeholder.
+       Replace this file with your real logo (keep the name favicon.svg),
+       or use a PNG and change the <link rel="icon"> line in each HTML file. -->
+  <rect x="4" y="4" width="56" height="56" fill="#e6f2f2" stroke="#008080" stroke-width="6"/>
+</svg>
